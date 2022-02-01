@@ -6,6 +6,7 @@ import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.audio.AudioAttributes
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import com.plcoding.spotifycloneyt.data.remote.MusicDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,5 +40,9 @@ object ServiceModule {
     fun provideDataSourceFactory(
         @ApplicationContext context: Context
     ) = DefaultDataSourceFactory(context, Util.getUserAgent(context, "Spotify App"))
+
+    @ServiceScoped
+    @Provides
+    fun provideMusicDatabase() : MusicDatabase = MusicDatabase()
 
 }
